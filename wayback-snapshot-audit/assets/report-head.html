@@ -1,0 +1,262 @@
+<title>Seleksi Snapshot Domain XLIV</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+  :root{
+    --paper:#eef2f0;
+    --paper-raised:#ffffff;
+    --ink:#16231f;
+    --ink-soft:#51625c;
+    --ink-faint:#7c8b85;
+    --line:rgba(22,35,31,0.14);
+    --accent:#1f7a6c;
+    --accent-bg:#e2efec;
+    --accent-ink:#0d3d34;
+    --warn:#a56a1f;
+    --warn-bg:#faf0dd;
+    --warn-ink:#5c3c0f;
+    --bad:#9c4136;
+    --bad-bg:#f7e6e2;
+    --bad-ink:#5c2318;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0f1513;
+      --paper-raised:#171f1c;
+      --ink:#e7ede9;
+      --ink-soft:#a3b2ac;
+      --ink-faint:#728178;
+      --line:rgba(231,237,233,0.14);
+      --accent:#57c2ab;
+      --accent-bg:#173832;
+      --accent-ink:#bdeee1;
+      --warn:#e0a758;
+      --warn-bg:#332512;
+      --warn-ink:#f3d6a4;
+      --bad:#e08d80;
+      --bad-bg:#332019;
+      --bad-ink:#f3c3ba;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0f1513;
+    --paper-raised:#171f1c;
+    --ink:#e7ede9;
+    --ink-soft:#a3b2ac;
+    --ink-faint:#728178;
+    --line:rgba(231,237,233,0.14);
+    --accent:#57c2ab;
+    --accent-bg:#173832;
+    --accent-ink:#bdeee1;
+    --warn:#e0a758;
+    --warn-bg:#332512;
+    --warn-ink:#f3d6a4;
+    --bad:#e08d80;
+    --bad-bg:#332019;
+    --bad-ink:#f3c3ba;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans',system-ui,sans-serif;
+    padding:clamp(20px,5vw,64px) clamp(16px,6vw,72px) 80px;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{max-width:980px;margin:0 auto;}
+
+  header.page{
+    border-bottom:1px solid var(--line);
+    padding-bottom:28px;
+    margin-bottom:36px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.11em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin:0 0 14px;
+  }
+  h1{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:clamp(32px,4.4vw,46px);
+    line-height:1.08;
+    margin:0 0 14px;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    max-width:64ch;
+    color:var(--ink-soft);
+    font-size:16px;
+    line-height:1.6;
+    margin:0 0 26px;
+  }
+  .lede code{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.92em;
+    background:var(--accent-bg);
+    color:var(--accent-ink);
+    padding:0.1em 0.4em;
+    border-radius:4px;
+  }
+
+  .stats{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    border:1px solid var(--line);
+    background:var(--paper-raised);
+    border-radius:10px;
+    padding:12px 18px;
+    min-width:110px;
+  }
+  .stat .n{
+    font-family:'JetBrains Mono',monospace;
+    font-size:24px;
+    font-weight:600;
+    font-variant-numeric:tabular-nums;
+    line-height:1;
+  }
+  .stat .l{
+    font-size:12px;
+    color:var(--ink-faint);
+    margin-top:5px;
+  }
+  .stat.accent .n{color:var(--accent);}
+  .stat.warn .n{color:var(--warn);}
+  .stat.bad .n{color:var(--bad);}
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:16px;
+    margin-top:8px;
+  }
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr;}
+  }
+
+  .card{
+    background:var(--paper-raised);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:10px;
+    padding:20px 22px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .card.state-warn{border-left-color:var(--warn);}
+  .card.state-bad{border-left-color:var(--bad);}
+
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .domain{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
+    font-size:16.5px;
+    word-break:break-word;
+  }
+  .badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:3px 9px;
+    border-radius:100px;
+    white-space:nowrap;
+    background:var(--accent-bg);
+    color:var(--accent-ink);
+  }
+  .card.state-warn .badge{background:var(--warn-bg);color:var(--warn-ink);}
+  .card.state-bad .badge{background:var(--bad-bg);color:var(--bad-ink);}
+
+  .niche{
+    font-size:14px;
+    color:var(--ink-soft);
+    line-height:1.5;
+    margin:0;
+  }
+  .meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    letter-spacing:0.02em;
+  }
+
+  .snaps{
+    display:flex;
+    flex-direction:column;
+    border-top:1px solid var(--line);
+    margin-top:2px;
+  }
+  .snap{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:9px 4px;
+    border-bottom:1px solid var(--line);
+    transition:background 0.12s ease;
+    border-radius:5px;
+  }
+  .snap:last-child{border-bottom:none;}
+  .snap:hover{background:var(--accent-bg);}
+  .snap .yr{
+    font-family:'JetBrains Mono',monospace;
+    font-weight:600;
+    font-size:13px;
+    color:var(--accent);
+    width:38px;
+    flex:none;
+  }
+  .card.state-warn .snap .yr{color:var(--warn);}
+  .card.state-bad .snap .yr{color:var(--bad);}
+  .snap .dt{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    flex:1;
+  }
+  .snap .go{
+    font-size:12px;
+    color:var(--ink-faint);
+    flex:none;
+  }
+  .snap:hover .go{color:var(--accent-ink);}
+  .card.state-warn .snap:hover .go{color:var(--warn-ink);}
+  .card.state-bad .snap:hover .go{color:var(--bad-ink);}
+
+  .note{
+    font-size:12.8px;
+    line-height:1.5;
+    padding:9px 11px;
+    border-radius:7px;
+    background:var(--warn-bg);
+    color:var(--warn-ink);
+  }
+  .card.state-bad .note{background:var(--bad-bg);color:var(--bad-ink);}
+
+  footer{
+    margin-top:44px;
+    padding-top:20px;
+    border-top:1px solid var(--line);
+    font-size:12.5px;
+    color:var(--ink-faint);
+    line-height:1.6;
+    max-width:64ch;
+  }
+</style>
+
